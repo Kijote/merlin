@@ -29,7 +29,7 @@ Este proceso se denomina trilateración.
 
 **Trilateración**
 
-Existen variados métodos de solución de la trilateración, este proyecto utiliza el [algoritmo de trilateración](https://confluence.slac.stanford.edu/display/IEPM/TULIP+Algorithm+Alternative+Trilateration+Method) presentado por investigadores de la Universidad de Standford debido a su simplicidad y alta performance.
+Existen variados métodos de solución de la trilateración, este proyecto utiliza el [algoritmo de trilateración](https://confluence.slac.stanford.edu/display/IEPM/TULIP+Algorithm+Alternative+Trilateration+Method) presentado por investigadores de la Universidad de Stanford debido a su simplicidad y alta performance.
 
 ### 2. Mensaje
 
