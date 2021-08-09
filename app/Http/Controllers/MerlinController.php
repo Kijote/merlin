@@ -50,9 +50,9 @@ class MerlinController extends Controller
     public function getFromSplittedData(){
         /*
             Obtengo los 10 últimos registros que cumplen con la condición que se encuentren
-            dentro de una ventana de tiempo de 90 segundos desde el último registro
+            dentro de una ventana de tiempo de 150 segundos desde el último registro
         */
-        $timeWindow = 90;
+        $timeWindow = 150;
         $query = "SELECT `id`, `name`, `distance`, `message`, `request_time`
         FROM `satellite_data` WHERE UNIX_TIMESTAMP(`request_time`) > (SELECT UNIX_TIMESTAMP(`request_time`)
         FROM `satellite_data` ORDER BY `id` DESC LIMIT 1) - $timeWindow ORDER BY `id` DESC LIMIT 10";
