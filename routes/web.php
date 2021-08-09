@@ -22,7 +22,9 @@ $router->group(['middleware' => 'auth'], function() use ($router){
         ['uses' => 'MerlinController@getFromSplittedData']);
 });
 
+/*
 // Si se intenta vía get, el resultado de cualquier request será el silencio
 $router->get('/{any:.*}', function ($any) use ($router) {
     return SILENCE;
 });
+*/
