@@ -123,7 +123,7 @@ class MerlinController extends Controller
         $message = null;
         if(!is_null($m1) && !is_null($m2) && !is_null($m3)){
             try {
-                $message = $this->getMessage((string) $m1, (string) $m2, (string) $m3);
+                $message = $this->getMessage((array) $m1, (array) $m2, (array) $m3);
             } catch (Exception $e){
                 throw new HttpException(404, 'Error, no se puede determinar el mensaje');
             }

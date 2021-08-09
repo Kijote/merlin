@@ -8,12 +8,13 @@ use \Exception;
  */
 class MessageHelper{
     
-    static function getMessage($d1, $d2, $d3) {
+    static function getMessage($m1, $m2, $m3) {
+        
         // Armo un stack para los mensajes
         $stack = [];
 
         // Array de mensajes
-        $messages = [$d1, $d2, $d3];
+        $messages = [$m1, $m2, $m3];
 
         // Obtengo la menor cantidad de índices de los arrays pasados
         $count = min(array_map('count', $messages));
