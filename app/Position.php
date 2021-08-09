@@ -1,7 +1,9 @@
 <?php
 
 namespace App;
-
+/**
+ * Clase para crear objetos Position con propiedades x e y
+ */
 class Position {
     public $x, $y;
 

@@ -3,6 +3,10 @@
 namespace App;
 use \Exception;
 
+/**
+ * Helper de Trilateración para challenge de Mercado Libre, escrito desde cero.
+ * Basado en https://confluence.slac.stanford.edu/display/IEPM/TULIP+Algorithm+Alternative+Trilateration+Method
+ */
 class TrilaterationHelper{
     static function getKenobiPosition(){
         return new Position(-500,-200);
@@ -17,9 +21,9 @@ class TrilaterationHelper{
     }
     
     static function getTrilateratedPosition($d1, $d2, $d3) {
-        $p1 = self::getKenobiPosition();    //k_pos
-        $p2 = self::getSkywalkerPosition(); //s_pos
-        $p3 = self::getSatoPosition();      //t_pos
+        $p1 = self::getKenobiPosition();
+        $p2 = self::getSkywalkerPosition();
+        $p3 = self::getSatoPosition();
 
         $precision = 2;
 
