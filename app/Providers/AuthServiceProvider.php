@@ -29,12 +29,12 @@ class AuthServiceProvider extends ServiceProvider
         $this->app['auth']->viaRequest('topsecret', function ($request){return $this->getApiTokenUser($request);} );
     }
 
-    // Verifico que el api_token venga en request o header
+    // Verifico que el api-token venga en request o header
     private function getApiTokenUser($request) {
-        $apiToken = $request->input('api_token');
+        $apiToken = $request->input('api-token');
 
         if ($apiToken === null) {
-            $apiToken = $request->header('api_token');
+            $apiToken = $request->header('api-token');
         }
 
         $return = null;
