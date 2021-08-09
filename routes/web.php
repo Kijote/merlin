@@ -11,16 +11,18 @@
 |
 */
 
-/*
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
-*/
-
 const SILENCE = 'Hola querido padawan, no hay nada más para mostrar por aquí. Que la fuerza te acompañe.';
 
+$router->group(['middleware' => 'auth'], function() use ($router){
+    $router->post('topsecret',  
+        ['uses' => 'MerlinController@getPositionAndMessage']);
+    $router->post('topsecret_split/{satelliteName}',  
+        ['uses' => 'MerlinController@setSplittedData']);
+    $router->get('topsecret_split',
+        ['uses' => 'MerlinController@getFromSplittedData']);
+});
+
+// Si se intenta vía get, el resultado de cualquier request será el silencio
 $router->get('/{any:.*}', function ($any) use ($router) {
     return SILENCE;
 });
-
-$router->post('topsecret',         ['middleware' => 'auth', 'uses' => 'MerlinController@getPositionAndMessage']);
