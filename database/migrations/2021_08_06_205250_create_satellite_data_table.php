@@ -25,11 +25,10 @@ class CreateSatelliteDataTable extends Migration
     public function up()
     {
         Schema::create('satellite_data', function (Blueprint $table) {
-            $table->id()->unsigned();
-            $table->primary('id');
+            $table->id('id')->unsigned();
             $table->string('name');
             $table->timestamp('request_time');
-            $table->float('distance');
+            $table->decimal('distance', 13, 4);
             $table->string('message');
         });
     }
