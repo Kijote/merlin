@@ -16,28 +16,24 @@ RUN \
     && docker-php-ext-configure mysqli --with-mysqli=mysqlnd \
     && docker-php-ext-install pdo_mysql
 
+# Rewrite de Apache
+RUN a2enmod rewrite
+
 # Instalar herramientas básicas
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata
 RUN apt-get install -y curl git zip unzip nodejs
-
-# Seteo el working directory
-WORKDIR /var/www
-
-######################## APLICACION - PROYECTO ########################
-
-RUN git clone https://Kijote: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@github.com/Kijote/merlin.git
 
 ######################## APLICACION - COMPOSER ########################
 
 # Instalo composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+RUN mkdir /var/www/merlin
+RUN touch merlin_home
+
 # Seteo el working directory
 WORKDIR /var/www/merlin
-
-# Instalo todas las dependencias del proyecto
-RUN composer install
 
 ######################## LIMPIAR APT ########################
 

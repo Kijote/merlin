@@ -26,6 +26,8 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
+    volumes:
+      - ./:/var/www/merlin
     depends_on:
       - mysql
   
@@ -33,8 +35,10 @@ services:
     image: kijote/merlin:latest
     depends_on:
       - merlin
+    volumes:
+      - ./:/var/www/merlin
     restart: "no"
-    command: "bash -c 'cp .env.example .env' && bash -c 'php artisan migrate --force --no-interaction'"
+    command: bash -c "cp .env.example .env && composer install && php artisan migrate --force --no-interaction"
 
 secrets:
   db_root_password:
