@@ -1,0 +1,49 @@
+version: '3.7'
+
+services:
+  mysql:  
+    image: mysql:5.7
+    container_name: mysql
+    hostname: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_root_password
+      - MYSQL_DATABASE=appdb
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD_FILE=/run/secrets/db_password
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:3306:3306
+    volumes:
+      - mysql-data:/var/lib/mysql
+    secrets:
+      - db_root_password
+      - db_password
+
+  merlin:
+    image: kijote/merlin:latest
+    container_name: merlin
+    hostname: merlin
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql
+  
+  merlinsetup:
+    image: kijote/merlin:latest
+    depends_on:
+      - merlin
+    restart: "no"
+    command: "bash -c 'cp .env.example .env' && bash -c 'php artisan migrate --force --no-interaction'"
+
+secrets:
+  db_root_password:
+    file: .db_root_password
+  db_password:
+    file: .db_password
+
+volumes:
+  mysql-data:
+
+networks:
+  default:
