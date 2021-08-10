@@ -37,4 +37,48 @@ Para determinar el mensaje, se analiza cada una de las recepciones de los satél
 
 Luego, para obtener el mensaje, se unifican dichos arrays sólo tomando en cuenta los mensajes que tienen contenido no vacío.
 
+## La implementación
+
+El desarrollo de la solución se hizo sobre [Lumen](https://lumen.laravel.com/), un micro-framework PHP para el desarrollo de micro servicios y APIs desarrollado por Laravel.
+
+### Instalación local del entorno
+
+Para utilizar localmente el proyecto se debe disponer de git y docker-compose, ya que se ha desarrollado una imagen de docker basada en PHP v7.4 con Apache y MySQL hosteada en dockerhub
+
+
+    $ git clone git@github.com:Kijote/merlin.git
+    $ cd merlin
+
+En la siguiente línea hay que cambiar _tu_pass_para_usuario_root_de_db_ por una contraseña a elección para el usuario root de la base de datos
+
+    $ echo "tu_pass_para_usuario_root_de_db" > .db_root_password
+
+Luego se utiliza docker-compose para iniciar el entorno
+
+    $ docker-compose up -d
+
+Este comando inicia MySQL, el proyecto merlin y un proyecto de configuración del mismo que prepara el entorno utilizando composer y artisan.
+
+La imagen contiene todo lo necesario para ejecutar el proyecto.
+
+### Solución Cloud-based
+
+La solución se encuentra hosteada en Heroku, con deploy automático desde GitHub.
+
+El acceso es vía la siguiente url:
+
+    https://www.kijote.com.ar/
+
+con los endpoint siguientes
+
+    https://www.kijote.com.ar/topsecret
+    https://www.kijote.com.ar/topsecret_split
+
+para los niveles 2 y 3 respectivamente.
+
+### API-TOKEN
+
+Para el acceso a los servicios de la API es necesario setear en los headers la clave api-token con el valor ChEwi3.
+
+    api-token: ChEwi3
 
